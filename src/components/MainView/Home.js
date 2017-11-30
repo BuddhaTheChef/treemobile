@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableHighlight, Image, KeyboardAvoidingView } from 'react-native';
 
 
-export default class Second extends Component {
+export default class Home extends Component {
 
   render() {
     return (

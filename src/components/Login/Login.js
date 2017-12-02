@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, Image, KeyboardAvoidingView, Navigator } from 'react-native';
 
 
-export default class Login extends Component {
+export default function Login({ navigation }) {
 
-  render() {
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <View style={styles.logoContainer}>
@@ -30,14 +29,15 @@ export default class Login extends Component {
             ref={(input) => this.passwordInput = input}
            />
 
-          <TouchableOpacity style={styles.buttonContainer}>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}
+            style={styles.buttonContainer}>
             <Text style={styles.buttonText}>LOGIN</Text>
           </TouchableOpacity>
 
         </View>
       </KeyboardAvoidingView>
     );
-  }
+
 }
 
 const styles = StyleSheet.create({

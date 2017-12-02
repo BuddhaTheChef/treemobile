@@ -4,6 +4,16 @@ import { StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity
 
 export default function NewPage(params) {
   return (
-    <Text>This is another page after the home page</Text>
+    <View style={styles.container}>
+      <Text>This is another page after the home page</Text>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#3498db'
+  }
+
+});

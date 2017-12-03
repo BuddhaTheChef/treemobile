@@ -13,8 +13,8 @@ export default class Home extends Component {
           initialRegion={{
             latitude: 21.3347,
             longitude: -158.0808,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitudeDelta: 0.0522,
+            longitudeDelta: 0.0121,
           }}>
             <MapView.Marker
               coordinate={{
@@ -45,18 +45,24 @@ const styles = StyleSheet.create({
     position: 'absolute'
   },
   radius: {
-    height: 20,
-    width: 20,
+    height: 30,
+    width: 30,
     borderRadius: 50/2,
     overflow: 'hidden',
-    backgroundColor: 'rgba(0, 255, 117, 0.75)',
+    backgroundColor: 'rgba(0,122,255,0.3)',
     borderWidth: 1,
     borderColor: 'rgba(0,122,255,0.5)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   marker: {
-
+    height: 20,
+    width: 20,
+    borderRadius: 20/2,
+    overflow: 'hidden',
+    backgroundColor: 'rgba(0, 255, 117, 0.75)',
+    borderWidth: 3,
+    borderColor: 'whitesmoke',
   }
 
 });

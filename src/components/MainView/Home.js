@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
     position: 'absolute'
   },
   radius: {
-    height: 30,
-    width: 30,
+    height: 40,
+    width: 40,
     borderRadius: 50/2,
     overflow: 'hidden',
     backgroundColor: 'rgba(0,122,255,0.3)',
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: 'rgba(0, 255, 117, 0.75)',
     borderWidth: 3,
-    borderColor: 'whitesmoke',
+    borderColor: 'rgb(147, 84, 0)',
   }
 
 });

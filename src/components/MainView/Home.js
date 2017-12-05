@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: 'rgba(0,122,255,0.3)',
     borderWidth: 1,
-    borderColor: 'rgba(0,122,255,0.5)',
+    borderColor: 'rgba(0,122,255,0.6)',
     alignItems: 'center',
     justifyContent: 'center',
   },

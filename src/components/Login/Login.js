@@ -66,12 +66,14 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: 'rgba(255,255,255,0.8)',
     marginBottom: 25,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    borderRadius: 5
   },
   buttonContainer: {
     backgroundColor: 'rgb(18, 130, 44)',
     paddingVertical: 15,
-    marginBottom: 30
+    marginBottom: 30,
+    borderRadius: 5
   },
   buttonText: {
     textAlign: 'center',

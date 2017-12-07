@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: 'rgb(18, 130, 44)',
     paddingVertical: 15,
-    marginBottom: 90,
+    marginBottom:67,
     borderRadius: 5,
 
 

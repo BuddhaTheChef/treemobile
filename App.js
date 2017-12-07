@@ -4,6 +4,7 @@ import Login from './src/components/Login/Login';
 import Home from './src/components/MainView/Home';
 import NewPage from './src/components/NewPage/NewPage';
 import Create from './src/components/Create/Create';
+import ProjectPage from './src/components/Project/ProjectPage';
 
 
 import { StackNavigator } from 'react-navigation';
@@ -31,10 +32,10 @@ export default StackNavigator({
     navigationOptions: ({ navigation }) => {
       return {
       title: 'Home',
-      // headerRight: (<Button
-      //   title={'New'}
-      //   onPress={() => navigation.navigate('NewPage')}
-      // />)
+      headerRight: (<Button
+        title={'Projects'}
+        onPress={() => navigation.navigate('ProjectPage')}
+      />)
       };
     }
   },
@@ -48,6 +49,12 @@ export default StackNavigator({
     screen: Create,
     navigationOptions: {
       title: 'Create Project'
+    }
+  },
+  ProjectPage: {
+    screen: ProjectPage,
+    navigationOptions: {
+      title: 'Projects'
     }
   }
 });

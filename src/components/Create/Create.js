@@ -84,7 +84,7 @@ export default class Create extends Component {
                this.inputs['five'] = input;
            }}
             />
-            <TouchableOpacity onPress={() => navigate('Home')}
+            <TouchableOpacity onPress={() => navigate('ProjectPage')}
               style={styles.buttonContainer}>
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>

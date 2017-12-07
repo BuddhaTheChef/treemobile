@@ -12,19 +12,22 @@ export default function Home({ navigation }) {
         <Text style={styles.buttonText}>Find Trees</Text>
       </TouchableOpacity>
         <Text>
-          ADD SOME TYPE OF DESCRIPTION HERE EXPLAINING WHAT THIS BUTTON DOES AND WHERE IT ROUTES YOU NEXT ALSO
-          ADD A BACKGROUND IMAGE OR DECIDE IF YOU WANT TO MAKE IT LOOK LIKE THIS COOL STUFF!
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </Text>
     </View>
-    <Text style={styles.middleThing}>ADD SOMETHING HERE (LOGO)</Text>
+
+      <Image style={styles.logo} source={require('../../images/treelogo.jpg')} />
+
+
     <View style={styles.bottomcontainer}>
       <TouchableOpacity onPress={() => navigation.navigate('Create')}
         style={styles.buttonContainer}>
         <Text style={styles.buttonText}>Create Project</Text>
       </TouchableOpacity>
         <Text>
-          ADD SOME TYPE OF DESCRIPTION HERE EXPLAINING WHAT THIS BUTTON DOES AND WHERE IT ROUTES YOU NEXT ALSO
-          ADD A BACKGROUND IMAGE OR DECIDE IF YOU WANT TO MAKE IT LOOK LIKE THIS COOL STUFF!
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
         </Text>
     </View>
 
@@ -46,7 +49,20 @@ const styles = StyleSheet.create({
   },
   middleThing: {
    textAlign: 'center',
-   backgroundColor: 'mediumaquamarine'
+   backgroundColor: 'grey',
+   height: 0
+ },
+ logo: {
+   top: 285,
+   left: 156,
+   zIndex: 5,
+   position: 'absolute',
+   width: 100,
+   height: 100,
+   borderRadius: 50,
+   borderWidth: 2 ,
+   borderColor: 'black'
+
  },
   bottomcontainer: {
     justifyContent: 'center',
@@ -58,12 +74,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(18, 130, 44)',
     paddingVertical: 15,
     marginBottom: 30,
-    borderRadius: 5
+    borderRadius: 5,
+    borderWidth: 2 ,
+    borderColor: 'black'
   },
   buttonText: {
     textAlign: 'center',
     color: '#FFF',
-    fontWeight: '700'
+    fontWeight: '700',
+
   }
 
 });

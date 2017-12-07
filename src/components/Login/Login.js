@@ -72,8 +72,10 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: 'rgb(18, 130, 44)',
     paddingVertical: 15,
-    marginBottom: 30,
-    borderRadius: 5
+    marginBottom: 90,
+    borderRadius: 5,
+
+
   },
   buttonText: {
     textAlign: 'center',

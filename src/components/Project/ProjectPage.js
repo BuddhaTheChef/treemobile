@@ -12,31 +12,31 @@ export default class ProjectPage extends Component {
     const {navigate} = this.props.navigation;
     return (
     <ScrollView style={styles.container}>
-    <TouchableOpacity style={styles.projects}>
+    <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects} >
         <Text>Added Projects Go Here!</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.projects}>
+      <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
         <Text>Added Projects Go Here!</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.projects}>
+      <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
         <Text>Added Projects Go Here!</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.projects}>
+      <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
         <Text>Added Projects Go Here!</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.projects}>
+      <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
         <Text>Added Projects Go Here!</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.projects}>
+      <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
         <Text>Added Projects Go Here!</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.projects}>
+      <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
         <Text>Added Projects Go Here!</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.projects}>
+      <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
         <Text>Added Projects Go Here!</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.projects}>
+      <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
         <Text>Added Projects Go Here!</Text>
      </TouchableOpacity>
     </ScrollView>

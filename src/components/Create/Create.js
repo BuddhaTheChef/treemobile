@@ -1,104 +1,83 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, Image, KeyboardAvoidingView, Navigator, ScrollView } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import React, {Component} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableHighlight,
+  TouchableOpacity,
+  Image,
+  KeyboardAvoidingView,
+  Navigator,
+  ScrollView
+} from 'react-native';
+import {StackNavigator} from 'react-navigation';
 
 export default class Create extends Component {
   constructor(props) {
-   super(props);
+    super(props);
 
-   this.focusNextField = this.focusNextField.bind(this);
+    this.focusNextField = this.focusNextField.bind(this);
 
-   this.inputs = {};
+    this.inputs = {};
 
- }
+  }
 
- focusNextField(id) {
-   this.inputs[id].focus();
- }
+  focusNextField(id) {
+    this.inputs[id].focus();
+  }
 
   render() {
-      const { navigate } = this.props.navigation;
-  return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
-<ScrollView>
-      <Text>PROJECT</Text>
-      <TextInput
-        placeholder="Project Name"
-        placeholderTextColor="rgba(0,0,0,0.5)"
-        style={styles.input}
-        blurOnSubmit={ false }
-        onSubmitEditing={() => {
-          this.focusNextField('two');
-        }}
-          returnKeyType={ "next" }
-          ref={ input => {
-          this.inputs['one'] = input;
-      }}
-       />
-       <Text>FROM</Text>
-       <TextInput placeholder="Company Name"
-         placeholderTextColor="rgba(0,0,0,0.5)"
-         style={styles.input}
-         blurOnSubmit={ false }
-         onSubmitEditing={() => {
-           this.focusNextField('three');
-         }}
-           returnKeyType={ "next" }
-           ref={ input => {
-           this.inputs['two'] = input;
-       }}
-        />
-        <Text>TREES</Text>
-        <TextInput
-          placeholder="Number Of Trees"
-          placeholderTextColor="rgba(0,0,0,0.5)"
-          style={styles.input}
-          blurOnSubmit={ false }
-          onSubmitEditing={() => {
+    const {navigate} = this.props.navigation;
+    return (
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <ScrollView>
+          <Text style={styles.inputTitle}>PROJECT</Text>
+          <TextInput placeholder="Project Name" placeholderTextColor="rgba(0,0,0,0.5)" style={styles.input} blurOnSubmit={false} onSubmitEditing={() => {
+            this.focusNextField('two');
+          }} returnKeyType={"next"} ref={input => {
+            this.inputs['one'] = input;
+          }}/>
+          <Text style={styles.inputTitle}>FROM</Text>
+          <TextInput placeholder="Company Name" placeholderTextColor="rgba(0,0,0,0.5)" style={styles.input} blurOnSubmit={false} onSubmitEditing={() => {
+            this.focusNextField('three');
+          }} returnKeyType={"next"} ref={input => {
+            this.inputs['two'] = input;
+          }}/>
+          <Text style={styles.inputTitle}>TREES</Text>
+          <TextInput placeholder="Number Of Trees" placeholderTextColor="rgba(0,0,0,0.5)" style={styles.input} blurOnSubmit={false} onSubmitEditing={() => {
             this.focusNextField('four');
-          }}
-            returnKeyType={ "next" }
-            ref={ input => {
+          }} returnKeyType={"next"} ref={input => {
             this.inputs['three'] = input;
-        }}
-         />
-         <Text>LOCATION</Text>
-         <TextInput
-           placeholder="Street Address"
-           placeholderTextColor="rgba(0,0,0,0.5)"
-           style={styles.input}
-           blurOnSubmit={ false }
-           onSubmitEditing={() => {
-             this.focusNextField('five');
-           }}
-             returnKeyType={ "next" }
-             ref={ input => {
-             this.inputs['four'] = input;
-         }}
-          />
-           <Text>BID</Text>
-           <TextInput placeholder="Enter $ Amount"
-             placeholderTextColor="rgba(0,0,0,0.5)"
-             style={styles.input}
-               ref={ input => {
-               this.inputs['five'] = input;
-           }}
-            />
-            <TouchableOpacity onPress={() => navigate('ProjectPage')}
-              style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>Submit</Text>
-            </TouchableOpacity>
+          }}/>
+          <Text style={styles.inputTitle}>LOCATION</Text>
+          <TextInput placeholder="Street Address" placeholderTextColor="rgba(0,0,0,0.5)" style={styles.input} blurOnSubmit={false} onSubmitEditing={() => {
+            this.focusNextField('five');
+          }} returnKeyType={"next"} ref={input => {
+            this.inputs['four'] = input;
+          }}/>
+          <Text style={styles.inputTitle}>BID</Text>
+          <TextInput placeholder="Enter $ Amount" placeholderTextColor="rgba(0,0,0,0.5)" style={styles.input} ref={input => {
+            this.inputs['five'] = input;
+          }}/>
+          <TouchableOpacity onPress={() => navigate('ProjectPage')} style={styles.buttonContainer}>
+            <Text style={styles.buttonText}>Submit</Text>
+          </TouchableOpacity>
 
-      </ScrollView>
-        </KeyboardAvoidingView>
-      );
-    }
+        </ScrollView>
+      </KeyboardAvoidingView>
+    );
+  }
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#3498db',
-    padding: 20,
+    padding: 20
+  },
+  inputTitle: {
+    marginLeft: 5,
+    paddingBottom: 5
   },
   input: {
     height: 40,
@@ -112,7 +91,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     marginTop: 50,
     borderRadius: 5,
-    borderWidth: 2 ,
+    borderWidth: 2,
     borderColor: 'black'
   },
   buttonText: {

@@ -1,10 +1,19 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, Image, KeyboardAvoidingView, Dimensions} from 'react-native';
+import React, {Component} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableHighlight,
+  TouchableOpacity,
+  Image,
+  KeyboardAvoidingView,
+  Dimensions
+} from 'react-native';
 import MapView from 'react-native-maps';
 import treelogo from '../../images/treelogo.jpg';
 
-
-const {width, height} =Dimensions.get('window')
+const {width, height} = Dimensions.get('window')
 
 const SCREEN_HEIGHT = height;
 const SCREEN_WIDTH = width;
@@ -24,9 +33,9 @@ export default class NewPage extends Component {
         latitude: LATITUDE,
         longitude: LONGITUDE,
         latitudeDelta: LATITUDE_DELTA,
-        longitudeDelta: LONGITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA
       },
-      markers: [],
+      markers: []
     };
 
     this.onMapPress = this.onMapPress.bind(this);
@@ -35,52 +44,38 @@ export default class NewPage extends Component {
   onMapPress(e) {
     this.setState({
       markers: [
-        ...this.state.markers,
-        {
+        ...this.state.markers, {
           coordinate: e.nativeEvent.coordinate,
-          key: `Tree${id++}`,
-        },
-      ],
+          key: `Tree${id++}`
+        }
+      ]
     });
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <MapView
-          provider={this.props.provider}
-          style={styles.map}
-          initialRegion={this.state.region}
-          onPress={this.onMapPress}
-        >
+        <MapView provider={this.props.provider} style={styles.map} initialRegion={this.state.region} onPress={this.onMapPress}>
           {this.state.markers.map(marker => (
-            <MapView.Marker
-              title={marker.key}
-              key={marker.key}
-              coordinate={marker.coordinate}>
- <MapView.Callout>
-  <Text>
-    {marker.key}
-      </Text>
-    <TextInput
-      placeholder="Description"
-      style={styles.inputMap}
-    />
+            <MapView.Marker title={marker.key} key={marker.key} coordinate={marker.coordinate}>
+              <MapView.Callout>
+                <Text>
+                  {marker.key}
+                </Text>
+                <TextInput placeholder="Description" style={styles.inputMap}/>
 
- </MapView.Callout>
+              </MapView.Callout>
             </MapView.Marker>
 
           ))}
           <View style={styles.radius}>
-                 <View style={styles.marker} />
-               </View>
+            <View style={styles.marker}/>
+          </View>
         </MapView>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            onPress={() => this.setState({ markers: [] })}
-            style={styles.bubble}
-          >
-            <Text>Delete all created Markers </Text>
+          <TouchableOpacity onPress={() => this.setState({markers: []})} style={styles.bubble}>
+            <Text>Delete all created Markers
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -88,12 +83,11 @@ export default class NewPage extends Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'flex-end',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   map: {
     left: 0,
@@ -106,46 +100,45 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.9)',
     paddingHorizontal: 18,
     paddingVertical: 12,
-    borderRadius: 20,
+    borderRadius: 20
   },
   latlng: {
     width: 200,
-    alignItems: 'stretch',
+    alignItems: 'stretch'
   },
   button: {
     width: 80,
     paddingHorizontal: 12,
     alignItems: 'center',
-    marginHorizontal: 10,
+    marginHorizontal: 10
   },
   buttonContainer: {
     flexDirection: 'row',
     marginVertical: 20,
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
   inputMap: {
     height: 40,
-    width: 80,
-
+    width: 80
   },
   radius: {
-  height: 40,
-  width: 40,
-  borderRadius: 50/2,
-  overflow: 'hidden',
-  backgroundColor: 'rgba(0,122,255,0.3)',
-  borderWidth: 1,
-  borderColor: 'rgba(0,122,255,0.6)',
-  alignItems: 'center',
-  justifyContent: 'center',
-},
-marker: {
-  height: 20,
-  width: 20,
-  borderRadius: 20/2,
-  overflow: 'hidden',
-  backgroundColor: 'rgba(0, 255, 117, 0.75)',
-  borderWidth: 3,
-  borderColor: 'rgb(147, 84, 0)',
-}
+    height: 40,
+    width: 40,
+    borderRadius: 50 / 2,
+    overflow: 'hidden',
+    backgroundColor: 'rgba(0,122,255,0.3)',
+    borderWidth: 1,
+    borderColor: 'rgba(0,122,255,0.6)',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  marker: {
+    height: 20,
+    width: 20,
+    borderRadius: 20 / 2,
+    overflow: 'hidden',
+    backgroundColor: 'rgba(0, 255, 117, 0.75)',
+    borderWidth: 3,
+    borderColor: 'rgb(147, 84, 0)'
+  }
 });

@@ -1,14 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableHighlight, Button } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableHighlight,
+  Button
+} from 'react-native';
 import Login from './src/components/Login/Login';
 import Home from './src/components/MainView/Home';
 import NewPage from './src/components/NewPage/NewPage';
 import Create from './src/components/Create/Create';
 import ProjectPage from './src/components/Project/ProjectPage';
 
-
-import { StackNavigator } from 'react-navigation';
-
+import {StackNavigator} from 'react-navigation';
 
 // export default class App extends React.Component {
 //
@@ -24,19 +29,13 @@ export default StackNavigator({
   Login: {
     screen: Login,
     navigationOptions: {
-      title: 'Login',
+      title: 'Login'
     }
   },
   Home: {
     screen: Home,
-    navigationOptions: ({ navigation }) => {
-      return {
-      title: 'Home',
-      headerRight: (<Button
-        title={'Projects'}
-        onPress={() => navigation.navigate('ProjectPage')}
-      />)
-      };
+    navigationOptions: ({navigation}) => {
+      return {title: 'Home', headerRight: (<Button title={'Projects'} onPress={() => navigation.navigate('ProjectPage')}/>)};
     }
   },
   NewPage: {
@@ -59,14 +58,11 @@ export default StackNavigator({
   }
 });
 
-
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'mediumaquamarine',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 });

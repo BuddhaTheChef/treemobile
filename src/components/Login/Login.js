@@ -1,42 +1,37 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, Image, KeyboardAvoidingView, Navigator } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableHighlight,
+  TouchableOpacity,
+  Image,
+  KeyboardAvoidingView,
+  Navigator
+} from 'react-native';
 
+export default function Login({navigation}) {
 
-export default function Login({ navigation }) {
+  return (
+    <KeyboardAvoidingView behavior="padding" style={styles.container}>
+      <View style={styles.logoContainer}>
+        <Image style={styles.logo} source={require('../../images/treelogo.jpg')}/>
+        <Text style={styles.title}>An app used to find and locate the right tree.</Text>
+      </View>
+      <View style={styles.formContainer}>
 
-    return (
-      <KeyboardAvoidingView behavior="padding" style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image style={styles.logo} source={require('../../images/treelogo.jpg')} />
-          <Text style={styles.title}>An app used to find and locate the right tree.</Text>
-        </View>
-        <View style={styles.formContainer}>
+        <TextInput placeholder="Username or Email" placeholderTextColor="rgba(0,0,0,0.5)" returnKeyType="next" onSubmitEditing={() => this.passwordInput.focus()} keyboardType='email-address' style={styles.input}/>
 
-          <TextInput
-            placeholder="Username or Email"
-            placeholderTextColor="rgba(0,0,0,0.5)"
-            returnKeyType= "next"
-            onSubmitEditing={() => this.passwordInput.focus()}
-            keyboardType = 'email-address'
-            style={styles.input}
-           />
+        <TextInput placeholder="Password" placeholderTextColor="rgba(0,0,0,0.5)" secureTextEntry returnKeyType="go" style={styles.input} ref={(input) => this.passwordInput = input}/>
 
-          <TextInput placeholder="Password"
-            placeholderTextColor="rgba(0,0,0,0.5)"
-            secureTextEntry
-            returnKeyType= "go"
-            style={styles.input}
-            ref={(input) => this.passwordInput = input}
-           />
+        <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>LOGIN</Text>
+        </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}
-            style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>LOGIN</Text>
-          </TouchableOpacity>
-
-        </View>
-      </KeyboardAvoidingView>
-    );
+      </View>
+    </KeyboardAvoidingView>
+  );
 
 }
 
@@ -46,7 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3498db',
     padding: 20
   },
-  logoContainer:{
+  logoContainer: {
     alignItems: 'center',
     flexGrow: 1,
     justifyContent: 'center'
@@ -72,10 +67,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: 'rgb(18, 130, 44)',
     paddingVertical: 15,
-    marginBottom:67,
-    borderRadius: 5,
-
-
+    marginBottom: 67,
+    borderRadius: 5
   },
   buttonText: {
     textAlign: 'center',

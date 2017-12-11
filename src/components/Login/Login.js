@@ -148,11 +148,11 @@ const styles = StyleSheet.create({
     color: 'rgb(7, 221, 67)'
   },
   warning: {
-    color: 'rgb(255, 0, 0)',
-    textShadowColor: 'whitesmoke',
+    color: 'rgb(255, 0, 99)',
+    textShadowColor: 'white',
     textShadowOffset: {
       width: 0,
-      height: .2
+      height: .1
     },
     textShadowRadius: 2,
     textAlign: 'center',

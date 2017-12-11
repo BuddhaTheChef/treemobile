@@ -13,18 +13,16 @@ import {
 import {StackNavigator} from 'react-navigation';
 import * as firebase from 'firebase';
 
-
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyC9I51PIE1HTT2BfFE1dEY6OEARHc1z8zQ",
-    authDomain: "treemobile-382cf.firebaseapp.com",
-    databaseURL: "https://treemobile-382cf.firebaseio.com",
-    projectId: "treemobile-382cf",
-    storageBucket: "treemobile-382cf.appspot.com",
-    messagingSenderId: "772463860333"
-  };
-  firebase.initializeApp(config);
-
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyC9I51PIE1HTT2BfFE1dEY6OEARHc1z8zQ",
+  authDomain: "treemobile-382cf.firebaseapp.com",
+  databaseURL: "https://treemobile-382cf.firebaseio.com",
+  projectId: "treemobile-382cf",
+  storageBucket: "treemobile-382cf.appspot.com",
+  messagingSenderId: "772463860333"
+};
+firebase.initializeApp(config);
 
 export default class Login extends Component {
   constructor(props) {
@@ -38,42 +36,39 @@ export default class Login extends Component {
     };
   }
 
-    onLoginPress(){
-      this.setState({error: '', loading: true});
+  onLoginPress() {
+    this.setState({error: '', loading: true});
 
-      const{email, password} = this.state;
-      firebase.auth().signInWithEmailAndPassword(email,password)
-      .then(() => {
-        this.setState({error: '', loading: false});
-        this.props.navigation.navigate('Home');
-      })
-      .catch(() => {
-        this.setState({error: 'Wrong Email or Password', loading: false});
-      })
-    }
+    const {email, password} = this.state;
+    firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+      this.setState({error: '', loading: false});
+      this.props.navigation.navigate('Home');
+    }).catch(() => {
+      this.setState({error: 'Wrong Email or Password', loading: false});
+    })
+  }
 
-    onSignUpPress(){
-      this.setState({error: '', loading: true});
+  onSignUpPress() {
+    this.setState({error: '', loading: true});
 
-      const{email, password} = this.state;
-      firebase.auth().createUserWithEmailAndPassword(email,password)
-      .then(() => {
-        this.setState({error: '', loading: false});
-        this.props.navigation.navigate('Home');
-      })
-      .catch(() => {
-        this.setState({error: 'Wrong Email or Password', loading: false});
-      })
-    }
-
+    const {email, password} = this.state;
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+      this.setState({error: '', loading: false});
+      this.props.navigation.navigate('Home');
+    }).catch(() => {
+      this.setState({error: 'Wrong Email or Password', loading: false});
+    })
+  }
 
   render() {
     const {navigate} = this.props.navigation;
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <Text style={styles.warning}>{this.state.error}</Text>
         <View style={styles.logoContainer}>
           <Image style={styles.logo} source={require('../../images/treelogo.jpg')}/>
-          <Text style={styles.title}>An app used to find and locate the right tree.</Text>
+          <Text style={styles.title}>Fast and Easy way to locate Trees
+          </Text>
         </View>
         <View style={styles.formContainer}>
 
@@ -85,13 +80,13 @@ export default class Login extends Component {
             <Text style={styles.buttonText}>LOGIN</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={this.onSignUpPress.bind(this)}>
-            <View style={styles.signUpContainer}>
-              <Text>Don't have an account </Text><Text style={styles.title}>Sign Up</Text>
-            </View>
-          </TouchableOpacity>
-
-          <Text>{this.state.error}</Text>
+          <View style={styles.signUpContainer}>
+            <Text style={styles.signUpBegin}>Don't have an account
+            </Text>
+            <TouchableOpacity onPress={this.onSignUpPress.bind(this)}>
+              <Text style={styles.signUpEnd}> Sign Up</Text>
+            </TouchableOpacity>
+          </View>
 
         </View>
       </KeyboardAvoidingView>
@@ -131,7 +126,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: 'rgb(18, 130, 44)',
     paddingVertical: 15,
-    marginBottom: 12,
+    marginBottom: 6,
     borderRadius: 5
   },
   buttonText: {
@@ -141,8 +136,26 @@ const styles = StyleSheet.create({
   },
   signUpContainer: {
     justifyContent: 'center',
-    flexDirection:'row',
-    flexWrap:'wrap',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     marginBottom: 67,
+    padding: 5
   },
+  signUpBegin: {
+    color: '#fff'
+  },
+  signUpEnd: {
+    color: 'rgb(7, 221, 67)'
+  },
+  warning: {
+    color: 'rgb(255, 0, 0)',
+    textShadowColor: 'whitesmoke',
+    textShadowOffset: {
+      width: 0,
+      height: .5
+    },
+    textShadowRadius: 3,
+    textAlign: 'center',
+    fontSize: 18
+  }
 });

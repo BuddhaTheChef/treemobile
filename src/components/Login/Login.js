@@ -152,9 +152,9 @@ const styles = StyleSheet.create({
     textShadowColor: 'whitesmoke',
     textShadowOffset: {
       width: 0,
-      height: .5
+      height: .2
     },
-    textShadowRadius: 3,
+    textShadowRadius: 2,
     textAlign: 'center',
     fontSize: 18
   }

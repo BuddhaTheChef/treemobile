@@ -149,13 +149,14 @@ const styles = StyleSheet.create({
   },
   warning: {
     color: 'rgb(255, 0, 99)',
-    textShadowColor: 'white',
+    textShadowColor: 'rgb(168, 168, 168)',
     textShadowOffset: {
       width: 0,
       height: .1
     },
     textShadowRadius: 2,
     textAlign: 'center',
-    fontSize: 18
+    fontSize: 18,
+    fontWeight: 'bold'
   }
 });

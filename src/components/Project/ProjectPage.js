@@ -24,6 +24,9 @@ export default class ProjectPage extends Component {
     return (
       <ScrollView style={styles.container}>
         <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
+          <Text>{this.props.projName}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
           <Text>Added Projects Go Here!</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>

@@ -37,6 +37,10 @@ export default class Create extends Component {
     this.inputs[id].focus();
   }
 
+  onSubmit = () => {
+    console.log(this.state)
+  }
+
   render() {
     const {navigate} = this.props.navigation;
     return (
@@ -93,7 +97,7 @@ export default class Create extends Component {
             ref={input => {this.inputs['five'] = input;
           }}/>
 
-          <TouchableOpacity onPress={() => {console.log(this.state)}}
+          <TouchableOpacity onPress={() => this.onSubmit()}
             style={styles.buttonContainer}>
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableOpacity>

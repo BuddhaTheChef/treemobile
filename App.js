@@ -58,6 +58,7 @@ export default StackNavigator({
   }
 });
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

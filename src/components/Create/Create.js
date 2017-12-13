@@ -38,6 +38,7 @@ export default class Create extends Component {
   }
 
   onSubmit = () => {
+    this.props.navigation.navigate('ProjectPage', this.state);
     console.log(this.state)
   }
 

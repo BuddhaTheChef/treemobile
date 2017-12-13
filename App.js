@@ -58,6 +58,9 @@ export default StackNavigator({
   }
 });
 
+onSubmit = fields => {
+  console.log("App project page got: ", fields);
+}
 
 const styles = StyleSheet.create({
   container: {

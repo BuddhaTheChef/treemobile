@@ -11,6 +11,8 @@ import {
   Navigator,
   ScrollView
 } from 'react-native';
+import { List, ListItem } from 'react-native-elements';
+
 import {StackNavigator} from 'react-navigation';
 
 export default class ProjectPage extends Component {
@@ -18,12 +20,28 @@ export default class ProjectPage extends Component {
     super(props);
 
   }
+  onLearnMore = () => {
+  this.props.navigation.navigate('NewPage');
+};
 
   render() {
     const {navigate} = this.props.navigation;
     return (
       <ScrollView style={styles.container}>
-        <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
+          <List>
+
+        <ListItem
+          // key={user.login.username}
+          // roundAvatar
+          // avatar={{ uri: user.picture.thumbnail }}
+          title={this.props.navigation.state.params.projName}
+          subtitle={this.props.navigation.state.params.from}
+          onPress={() => this.onLearnMore()}
+        />
+
+    </List>
+
+        <TouchableOpacity onPress={() => console.log(this.props)} style={styles.projects}>
           <Text>{this.props.projName}</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
@@ -32,27 +50,7 @@ export default class ProjectPage extends Component {
         <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
           <Text>Added Projects Go Here!</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
-          <Text>Added Projects Go Here!</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
-          <Text>Added Projects Go Here!</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
-          <Text>Added Projects Go Here!</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
-          <Text>Added Projects Go Here!</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
-          <Text>Added Projects Go Here!</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
-          <Text>Added Projects Go Here!</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
-          <Text>Added Projects Go Here!</Text>
-        </TouchableOpacity>
+
       </ScrollView>
     );
 

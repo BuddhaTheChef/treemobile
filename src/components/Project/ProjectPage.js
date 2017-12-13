@@ -26,19 +26,19 @@ export default class ProjectPage extends Component {
 
   render() {
     const {navigate} = this.props.navigation;
+    const projArr = this.props.navigation.state.params.projArr;
     return (
       <ScrollView style={styles.container}>
-          <List>
 
+          <List>
         <ListItem
-          // key={user.login.username}
+          // key={i}
           // roundAvatar
           // avatar={{ uri: user.picture.thumbnail }}
-          title={this.props.navigation.state.params.projName}
-          subtitle={this.props.navigation.state.params.from}
+          title={this.props.navigation.state.params.projArr.projName}
+          subtitle={this.props.navigation.state.params.projArr.from}
           onPress={() => this.onLearnMore()}
-        />
-
+            />
     </List>
 
         <TouchableOpacity onPress={() => console.log(this.props)} style={styles.projects}>

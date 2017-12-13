@@ -20,12 +20,14 @@ export default class Create extends Component {
     super(props);
 
     this.state = {
+      projArr: {
       projName: '',
       from: '',
       numTree: '',
       location: '',
       price: '',
     }
+  }
 
     this.focusNextField = this.focusNextField.bind(this);
 
@@ -38,6 +40,7 @@ export default class Create extends Component {
   }
 
   onSubmit = () => {
+    this.setState({projArr: this.state.projArr})
     this.props.navigation.navigate('ProjectPage', this.state);
     console.log(this.state)
   }
@@ -52,7 +55,10 @@ export default class Create extends Component {
           <TextInput placeholder="Project Name"
              placeholderTextColor="rgba(0,0,0,0.5)"
              style={styles.input}
-             onChangeText={(text) => {this.setState({projName: text});}}
+             value={this.state.projArr.projName}
+             onChangeText={(text) => {
+               const newProjArr = Object.assign({}, this.state.projArr, { projName: text });
+               this.setState({ projArr: newProjArr });}}
              blurOnSubmit={false}
              onSubmitEditing={() => {this.focusNextField('two');}}
              returnKeyType={"next"}
@@ -63,7 +69,10 @@ export default class Create extends Component {
           <TextInput placeholder="Company Name"
             placeholderTextColor="rgba(0,0,0,0.5)"
             style={styles.input}
-            onChangeText={(text) => {this.setState({from: text});}}
+            value={this.state.projArr.from}
+            onChangeText={(text) => {
+              const newProjArr = Object.assign({}, this.state.projArr, { from: text });
+              this.setState({ projArr: newProjArr });}}
             blurOnSubmit={false}
             onSubmitEditing={() => {this.focusNextField('three');}}
             returnKeyType={"next"} ref={input => {this.inputs['two'] = input;
@@ -73,7 +82,10 @@ export default class Create extends Component {
           <TextInput placeholder="Number Of Trees"
             placeholderTextColor="rgba(0,0,0,0.5)"
             style={styles.input}
-            onChangeText={(text) => {this.setState({numTree: text});}}
+            value={this.state.projArr.numTree}
+            onChangeText={(text) => {
+              const newProjArr = Object.assign({}, this.state.projArr, { numTree: text });
+              this.setState({ projArr: newProjArr });}}
             blurOnSubmit={false} onSubmitEditing={() => {this.focusNextField('four');}}
             returnKeyType={"next"}
             ref={input => {this.inputs['three'] = input;
@@ -83,7 +95,10 @@ export default class Create extends Component {
           <TextInput placeholder="Street Address"
             placeholderTextColor="rgba(0,0,0,0.5)"
             style={styles.input}
-            onChangeText={(text) => {this.setState({location: text});}}
+            value={this.state.projArr.location}
+            onChangeText={(text) => {
+              const newProjArr = Object.assign({}, this.state.projArr, { location: text });
+              this.setState({ projArr: newProjArr });}}
             blurOnSubmit={false}
             onSubmitEditing={() => {this.focusNextField('five');}}
             returnKeyType={"next"}
@@ -94,7 +109,10 @@ export default class Create extends Component {
           <TextInput placeholder="Enter $ Amount"
             placeholderTextColor="rgba(0,0,0,0.5)"
             style={styles.input}
-            onChangeText={(text) => {this.setState({price: text});}}
+            value={this.state.projArr.price}
+            onChangeText={(text) => {
+              const newProjArr = Object.assign({}, this.state.projArr, { price: text });
+              this.setState({ projArr: newProjArr });}}
             ref={input => {this.inputs['five'] = input;
           }}/>
 

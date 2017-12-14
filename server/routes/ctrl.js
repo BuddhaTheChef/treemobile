@@ -13,7 +13,7 @@ module.exports = {
     console.log(req.body);
     req.app
     .get('db')
-    .create_project(req.body)
+    .proj_obj([req.body.projname, req.body.compfrom,req.body.numtree,req.body.location,req.body.price,req.body.email,req.body.uid])
     .then(response => {console.log(response); res.json(response)})
     .catch(err => console.log(err))
   },

@@ -34,14 +34,14 @@ export default class ProjectPage extends Component {
           // key={i}
           // roundAvatar
           // avatar={{ uri: user.picture.thumbnail }}
-          title={this.props.navigation.state.params.projName}
-          subtitle={this.props.navigation.state.params.from}
+          title={this.props.navigation.state.params.projname}
+          subtitle={this.props.navigation.state.params.compfrom}
           onPress={() => this.onLearnMore()}
             />
     </List>
 
         <TouchableOpacity onPress={() => console.log(this.props)} style={styles.projects}>
-          <Text>{this.props.projName}</Text>
+          <Text>{this.props.projname}</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
           <Text>Added Projects Go Here!</Text>

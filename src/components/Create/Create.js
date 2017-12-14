@@ -23,9 +23,9 @@ export default class Create extends Component {
     this.state = {
       email: '',
       uid: '',
-      projName: '',
-      from: '',
-      numTree: '',
+      projname: '',
+      compfrom: '',
+      numtree: '',
       location: '',
       price: '',
   }
@@ -54,7 +54,7 @@ export default class Create extends Component {
   onSubmit = (event) => {
     this.props.navigation.navigate('ProjectPage', this.state);
     console.log(this.state)
-    let projObj = {email: this.state.email,uid:this.state.uid,projName:this.state.projName,from:this.state.from,numTree:this.state.numTree,location:this.state.location,price:this.state.price}
+    let projObj = {email: this.state.email,uid:this.state.uid,projname:this.state.projname,compfrom:this.state.compfrom,numtree:this.state.numtree,location:this.state.location,price:this.state.price}
 
     axios.post('/api/createProject',projObj)
   //   .then(response => {
@@ -76,7 +76,7 @@ export default class Create extends Component {
              placeholderTextColor="rgba(0,0,0,0.5)"
              style={styles.input}
              value={this.state.text}
-             onChangeText={(text) => this.setState({projName: text})}
+             onChangeText={(text) => this.setState({projname: text})}
              blurOnSubmit={false}
              onSubmitEditing={() => {this.focusNextField('two');}}
              returnKeyType={"next"}
@@ -88,7 +88,7 @@ export default class Create extends Component {
             placeholderTextColor="rgba(0,0,0,0.5)"
             style={styles.input}
             value={this.state.from}
-            onChangeText={(text) => this.setState({from: text})}
+            onChangeText={(text) => this.setState({compfrom: text})}
             blurOnSubmit={false}
             onSubmitEditing={() => {this.focusNextField('three');}}
             returnKeyType={"next"} ref={input => {this.inputs['two'] = input;
@@ -99,7 +99,7 @@ export default class Create extends Component {
             placeholderTextColor="rgba(0,0,0,0.5)"
             style={styles.input}
             value={this.state.numTree}
-            onChangeText={(text) => this.setState({numTree: text})}
+            onChangeText={(text) => this.setState({numtree: text})}
             blurOnSubmit={false} onSubmitEditing={() => {this.focusNextField('four');}}
             returnKeyType={"next"}
             ref={input => {this.inputs['three'] = input;

@@ -31,16 +31,27 @@ export default class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      userUid: '',
       error: '',
       loading: false
     };
   }
 
-  onLoginPress() {
+  onLoginPress(event) {
     this.setState({error: '', loading: true});
-
+   console.log(this.state);
+   console.log(this.props);
     const {email, password} = this.state;
-    firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+    firebase.auth().signInWithEmailAndPassword(email, password).then(response => {
+      firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+
+    console.log(user.uid);
+    this.setState({ email: user.email })
+    this.setState({ userUid: user.uid })
+  }
+  console.log(this.state)
+});
       this.setState({error: '', loading: false});
       this.props.navigation.navigate('Home');
     }).catch(() => {
@@ -48,11 +59,22 @@ export default class Login extends Component {
     })
   }
 
-  onSignUpPress() {
+  onSignUpPress(event) {
     this.setState({error: '', loading: true});
 
     const {email, password} = this.state;
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(response => {
+      firebase.auth().onAuthStateChanged((user) => {
+
+      if (user) {
+
+
+        console.log(user.uid);
+        this.setState({ email: user.email })
+        this.setState({ userUid: user.uid })
+      }
+      console.log(this.state)
+    });
       this.setState({error: '', loading: false});
       this.props.navigation.navigate('Home');
     }).catch(() => {

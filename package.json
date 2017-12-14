@@ -19,8 +19,13 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "expo": "^23.0.4",
+    "express": "^4.16.2",
     "firebase": "^4.8.0",
+    "massive": "^4.4.0",
     "react": "16.0.0",
     "react-native": "0.50.3",
     "react-native-elements": "^0.18.5",

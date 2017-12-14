@@ -12,7 +12,8 @@ import {
   ScrollView
 } from 'react-native';
 import {StackNavigator} from 'react-navigation';
-
+import axios from 'axios';
+import * as firebase from 'firebase';
 const ProjectPage = require('../Project/ProjectPage');
 
 export default class Create extends Component {
@@ -20,14 +21,25 @@ export default class Create extends Component {
     super(props);
 
     this.state = {
-      projArr: {
+      email: '',
+      uid: '',
       projName: '',
       from: '',
       numTree: '',
       location: '',
       price: '',
-    }
   }
+}
+
+  componentWillMount() {
+ firebase.auth().onAuthStateChanged(user => {
+   if (user) {
+     this.setState({ email: user.email })
+     this.setState({ uid: user.uid })
+   }
+   console.log(this.state)
+ })
+
 
     this.focusNextField = this.focusNextField.bind(this);
 
@@ -39,10 +51,18 @@ export default class Create extends Component {
     this.inputs[id].focus();
   }
 
-  onSubmit = () => {
-    this.setState({projArr: this.state.projArr})
+  onSubmit = (event) => {
     this.props.navigation.navigate('ProjectPage', this.state);
     console.log(this.state)
+    let projObj = {email: this.state.email,uid:this.state.uid,projName:this.state.projName,from:this.state.from,numTree:this.state.numTree,location:this.state.location,price:this.state.price}
+
+    axios.post('/api/createProject',projObj)
+  //   .then(response => {
+  //     console.log(response);
+  //     // let post = response.data[0].post_id
+  //     // console.log(post);
+  //     // Send user to Post
+  //   })
   }
 
   render() {
@@ -55,10 +75,8 @@ export default class Create extends Component {
           <TextInput placeholder="Project Name"
              placeholderTextColor="rgba(0,0,0,0.5)"
              style={styles.input}
-             value={this.state.projArr.projName}
-             onChangeText={(text) => {
-               const newProjArr = Object.assign({}, this.state.projArr, { projName: text });
-               this.setState({ projArr: newProjArr });}}
+             value={this.state.text}
+             onChangeText={(text) => this.setState({projName: text})}
              blurOnSubmit={false}
              onSubmitEditing={() => {this.focusNextField('two');}}
              returnKeyType={"next"}
@@ -69,10 +87,8 @@ export default class Create extends Component {
           <TextInput placeholder="Company Name"
             placeholderTextColor="rgba(0,0,0,0.5)"
             style={styles.input}
-            value={this.state.projArr.from}
-            onChangeText={(text) => {
-              const newProjArr = Object.assign({}, this.state.projArr, { from: text });
-              this.setState({ projArr: newProjArr });}}
+            value={this.state.from}
+            onChangeText={(text) => this.setState({from: text})}
             blurOnSubmit={false}
             onSubmitEditing={() => {this.focusNextField('three');}}
             returnKeyType={"next"} ref={input => {this.inputs['two'] = input;
@@ -82,10 +98,8 @@ export default class Create extends Component {
           <TextInput placeholder="Number Of Trees"
             placeholderTextColor="rgba(0,0,0,0.5)"
             style={styles.input}
-            value={this.state.projArr.numTree}
-            onChangeText={(text) => {
-              const newProjArr = Object.assign({}, this.state.projArr, { numTree: text });
-              this.setState({ projArr: newProjArr });}}
+            value={this.state.numTree}
+            onChangeText={(text) => this.setState({numTree: text})}
             blurOnSubmit={false} onSubmitEditing={() => {this.focusNextField('four');}}
             returnKeyType={"next"}
             ref={input => {this.inputs['three'] = input;
@@ -95,10 +109,8 @@ export default class Create extends Component {
           <TextInput placeholder="Street Address"
             placeholderTextColor="rgba(0,0,0,0.5)"
             style={styles.input}
-            value={this.state.projArr.location}
-            onChangeText={(text) => {
-              const newProjArr = Object.assign({}, this.state.projArr, { location: text });
-              this.setState({ projArr: newProjArr });}}
+            value={this.state.location}
+            onChangeText={(text) => this.setState({location: text})}
             blurOnSubmit={false}
             onSubmitEditing={() => {this.focusNextField('five');}}
             returnKeyType={"next"}
@@ -109,14 +121,12 @@ export default class Create extends Component {
           <TextInput placeholder="Enter $ Amount"
             placeholderTextColor="rgba(0,0,0,0.5)"
             style={styles.input}
-            value={this.state.projArr.price}
-            onChangeText={(text) => {
-              const newProjArr = Object.assign({}, this.state.projArr, { price: text });
-              this.setState({ projArr: newProjArr });}}
+            value={this.state.price}
+            onChangeText={(text) => this.setState({price: text})}
             ref={input => {this.inputs['five'] = input;
           }}/>
 
-          <TouchableOpacity onPress={() => this.onSubmit()}
+          <TouchableOpacity onPress={(event) => this.onSubmit(event)}
             style={styles.buttonContainer}>
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableOpacity>

@@ -13,8 +13,16 @@ import {
   AsyncStorage
 } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
+import Swipeout from 'react-native-swipeout';
 
 import {StackNavigator} from 'react-navigation';
+
+
+var swipeoutBtns = [
+  {
+    text: 'Button'
+  }
+]
 
 export default class ProjectPage extends Component {
   constructor(props) {
@@ -42,21 +50,27 @@ parseData(){
     return this.state.list.map((data,i) => {
       console.log(data)
       return(
+          <Swipeout right={swipeoutBtns}>
         <ListItem key={i}
           title={data.projname}
           subtitle={data.compfrom}
           // rightIcon={data.numtree}
           onPress={() => this.props.navigation.navigate('NewPage')}
         />
+          </Swipeout>
       )
     })
   }
 }
 
   render() {
+    console.log(this.props)
+    console.log(this.state)
     const {navigate} = this.props.navigation;
     return (
+
       <ScrollView style={styles.container}>
+
         <List onPress={() => navigate('NewPage')}>{this.parseData()}</List>
 
         <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
@@ -67,8 +81,8 @@ parseData(){
         </TouchableOpacity>
 
       </ScrollView>
+
     );
-    console.log(projObj[0].projname)
 
   }
 }

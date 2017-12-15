@@ -9,7 +9,8 @@ import {
   Image,
   KeyboardAvoidingView,
   Navigator,
-  ScrollView
+  ScrollView,
+  AsyncStorage
 } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 
@@ -18,31 +19,46 @@ import {StackNavigator} from 'react-navigation';
 export default class ProjectPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      list: ''
+    }
+    try{
+      AsyncStorage.getItem('database_form').then((val) => {
+        this.setState({
+          list: JSON.parse(val)
+        })
+      })
+    }
+    catch(err){
+      console.log(err)
+    }
 
   }
   onLearnMore = () => {
   this.props.navigation.navigate('NewPage');
 };
+parseData(){
+  if(this.state.list){
+    return this.state.list.map((data,i) => {
+      console.log(data)
+      return(
+        <ListItem key={i}
+          title={data.projname}
+          subtitle={data.compfrom}
+          // rightIcon={data.numtree}
+          onPress={() => this.props.navigation.navigate('NewPage')}
+        />
+      )
+    })
+  }
+}
 
   render() {
     const {navigate} = this.props.navigation;
     return (
       <ScrollView style={styles.container}>
+        <List onPress={() => navigate('NewPage')}>{this.parseData()}</List>
 
-          <List>
-        <ListItem
-          // key={i}
-          // roundAvatar
-          // avatar={{ uri: user.picture.thumbnail }}
-          title={this.props.navigation.state.params.projname}
-          subtitle={this.props.navigation.state.params.compfrom}
-          onPress={() => this.onLearnMore()}
-            />
-    </List>
-
-        <TouchableOpacity onPress={() => console.log(this.props)} style={styles.projects}>
-          <Text>{this.props.projname}</Text>
-        </TouchableOpacity>
         <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
           <Text>Added Projects Go Here!</Text>
         </TouchableOpacity>
@@ -52,6 +68,7 @@ export default class ProjectPage extends Component {
 
       </ScrollView>
     );
+    console.log(projObj[0].projname)
 
   }
 }

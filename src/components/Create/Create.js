@@ -66,15 +66,16 @@ export default class Create extends Component {
 
     projArr.push(projObj);
     try {
-      AsyncStorage.getItem('database_form').then((val) => {
+      AsyncStorage.getItem('form').then((val) => {
         if (val !== null) {
-          const d = JSON.parse(val);
-          d.push(projObj)
-          AsyncStorage.setItem('database_form', JSON.stringify(d)).then(() => {
+          let a = JSON.parse(val);
+          a.push(projObj)
+          console.log(a)
+          AsyncStorage.setItem('form', JSON.stringify(a)).then(() => {
             this.props.navigation.navigate('ProjectPage', this.state);
           })
         } else {
-          AsyncStorage.setItem('database_form', JSON.stringify(projArr)).then(() => {
+          AsyncStorage.setItem('form', JSON.stringify(projArr)).then(() => {
             this.props.navigation.navigate('ProjectPage', this.state);
           })
         }

@@ -28,7 +28,7 @@ export default class ProjectPage extends Component {
       list: ''
     }
     try{
-      AsyncStorage.getItem('database_form').then((val) => {
+      AsyncStorage.getItem('form').then((val) => {
         this.setState({
           list: JSON.parse(val)
         })
@@ -39,16 +39,7 @@ export default class ProjectPage extends Component {
     }
 
   }
-  removeStorage() {
-  AsyncStorage.removeItem('database_form', (error) => {
-    if (error) {
-      this._appendMessage('AsyncStorage error: ' + error.message);
-    } else {
-      this._appendMessage('Selection removed from disk.');
-    }
 
-  });
-}
 
   onLearnMore = () => {
   this.props.navigation.navigate('NewPage');
@@ -59,7 +50,6 @@ parseData(){
     var projects = this.state.list;
     projects = keyIndex(projects, 1);
     return projects.map((data,i) => {
-
       console.log(data)
       console.log(i)
       console.log(this.props)
@@ -67,10 +57,10 @@ parseData(){
       let swipeBtns = [{
         text: 'Delete',
         backgroundColor: 'red',
-        onPress: () => {this.removeStorage.bind(this)}
+        // onPress: (val) => {this.resetKey.bind(this)}
       }];
       return(
-          <Swipeout right={swipeBtns}>
+          <Swipeout right={swipeBtns} onPress={console.log(data)}>
         <ListItem key={data._emailId}
           title={data.projname}
           subtitle={data.compfrom}
@@ -87,6 +77,8 @@ parseData(){
     })
   }
 }
+
+
 
   render() {
     console.log(this.props)

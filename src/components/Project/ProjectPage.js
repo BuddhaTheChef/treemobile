@@ -14,15 +14,12 @@ import {
 } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import Swipeout from 'react-native-swipeout';
+import keyIndex from 'react-key-index';
 
 import {StackNavigator} from 'react-navigation';
 
 
-var swipeoutBtns = [
-  {
-    text: 'Button'
-  }
-]
+
 
 export default class ProjectPage extends Component {
   constructor(props) {
@@ -42,20 +39,48 @@ export default class ProjectPage extends Component {
     }
 
   }
+  removeStorage() {
+  AsyncStorage.removeItem('database_form', (error) => {
+    if (error) {
+      this._appendMessage('AsyncStorage error: ' + error.message);
+    } else {
+      this._appendMessage('Selection removed from disk.');
+    }
+
+  });
+}
+
   onLearnMore = () => {
   this.props.navigation.navigate('NewPage');
 };
 parseData(){
+
   if(this.state.list){
-    return this.state.list.map((data,i) => {
+    var projects = this.state.list;
+    projects = keyIndex(projects, 1);
+    return projects.map((data,i) => {
+
       console.log(data)
+      console.log(i)
+      console.log(this.props)
+      console.log(projects)
+      let swipeBtns = [{
+        text: 'Delete',
+        backgroundColor: 'red',
+        onPress: () => {this.removeStorage.bind(this)}
+      }];
       return(
-          <Swipeout right={swipeoutBtns}>
-        <ListItem key={i}
+          <Swipeout right={swipeBtns}>
+        <ListItem key={data._emailId}
           title={data.projname}
           subtitle={data.compfrom}
           // rightIcon={data.numtree}
-          onPress={() => this.props.navigation.navigate('NewPage')}
+          onPress={() =>
+
+            // this.props.navigation.navigate('NewPage')
+              { console.log(data, "Was deleted")}
+
+          }
         />
           </Swipeout>
       )

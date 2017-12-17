@@ -69,6 +69,7 @@ export default class Create extends Component {
       AsyncStorage.getItem('form').then((val) => {
         if (val !== null) {
           let a = JSON.parse(val);
+          console.log(val)
           a.push(projObj)
           console.log(a)
           AsyncStorage.setItem('form', JSON.stringify(a)).then(() => {

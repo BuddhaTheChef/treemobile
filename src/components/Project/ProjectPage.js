@@ -29,6 +29,7 @@ export default class ProjectPage extends Component {
     }
     try{
       AsyncStorage.getItem('form').then((val) => {
+        console.log(this.props)
         this.setState({
           list: JSON.parse(val)
         })
@@ -37,46 +38,61 @@ export default class ProjectPage extends Component {
     catch(err){
       console.log(err)
     }
-
   }
+
 
 
   onLearnMore = () => {
   this.props.navigation.navigate('NewPage');
 };
 parseData(){
-
+  deleteNote = (key) => {
+    console.log(key);
+    this.state.list.splice(key, 1);
+    this.setState({list: this.state.list})
+    try{
+      AsyncStorage.removeItem('form').then((val) => {
+        console.log(this.props.navigation.state)
+        this.setState({
+          list: JSON.parse(val)
+        })
+        console.log(val)
+      })
+      console.log(form)
+    }catch(error){
+      console.log('Something Went Wrong!')
+    }
+  }
   if(this.state.list){
     var projects = this.state.list;
     projects = keyIndex(projects, 1);
+
     return projects.map((data,i) => {
       console.log(data)
+      console.log(data._emailId)
       console.log(i)
       console.log(this.props)
       console.log(projects)
       let swipeBtns = [{
         text: 'Delete',
         backgroundColor: 'red',
-        // onPress: (val) => {this.resetKey.bind(this)}
+         onPress: (key) => {deleteNote()}
       }];
       return(
-          <Swipeout right={swipeBtns} onPress={console.log(data)}>
-        <ListItem key={data._emailId}
-          title={data.projname}
-          subtitle={data.compfrom}
-          // rightIcon={data.numtree}
-          onPress={() =>
-
-            // this.props.navigation.navigate('NewPage')
-              { console.log(data, "Was deleted")}
-
-          }
-        />
+          <Swipeout right={swipeBtns} key={data._emailId} onPress={(key) => this.deleteNote.bind(this)}>
+            <ListItem key={data._emailId}
+              title={data.projname}
+              subtitle={data.compfrom}
+              onPress={() =>
+                // this.props.navigation.navigate('NewPage')
+                { console.log(data, "Was deleted")}
+                }
+              />
           </Swipeout>
-      )
-    })
+        )
+      })
+    }
   }
-}
 
 
 
@@ -88,7 +104,7 @@ parseData(){
 
       <ScrollView style={styles.container}>
 
-        <List onPress={() => navigate('NewPage')}>{this.parseData()}</List>
+        <List>{this.parseData()}</List>
 
         <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
           <Text>Added Projects Go Here!</Text>

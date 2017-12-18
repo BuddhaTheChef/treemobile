@@ -97,9 +97,13 @@ parseData(){
       }];
       return(
           <Swipeout right={swipeBtns} key={data._emailId} onPress={(key) => this.deleteNote.bind(this)}>
-            <ListItem key={data._emailId}
+            <ListItem
+              containerStyle={styles.listitem}
+              key={data._emailId}
               title={data.projname}
               subtitle={data.compfrom}
+              rightTitle={data.numtree}
+              rightTitleStyle={styles.rightIcon}
               onPress={() =>
                 // this.props.navigation.navigate('NewPage')
                 { console.log(data, "Was deleted")}
@@ -111,36 +115,25 @@ parseData(){
     }
   }
 
-
-
   render() {
     console.log(this.props)
     console.log(this.state)
     const {navigate} = this.props.navigation;
     return (
-
       <ScrollView style={styles.container}>
-
-        <List>{this.parseData()}</List>
-
+        <List containerStyle={styles.listContainer}>{this.parseData()}</List>
         <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
           <Text>Added Projects Go Here!</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigate('NewPage')} style={styles.projects}>
-          <Text>Added Projects Go Here!</Text>
-        </TouchableOpacity>
-
       </ScrollView>
-
     );
-
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#3498db'
+    backgroundColor: 'whitesmoke'
   },
   logo: {
     width: 100,
@@ -156,8 +149,17 @@ const styles = StyleSheet.create({
   projects: {
 
     backgroundColor: 'whitesmoke',
-    padding: 20,
-    borderWidth: 2,
-    borderColor: 'rgb(215, 215, 215)'
+    padding: 100,
+  },
+  rightIcon: {
+    fontSize: 18,
+    color: 'rgb(65, 65, 65)',
+    marginRight: 15
+  },
+  listContainer: {
+    marginTop: 0,
+  },
+  listitem: {
+    backgroundColor: 'whitesmoke'
   }
 });

@@ -29,11 +29,16 @@ export default class ProjectPage extends Component {
     }
     try{
       AsyncStorage.getItem('form').then((val) => {
-        console.log(this.props)
+        console.log(this.state.list)
+        console.log(val)
+        console.log(this.props.navigation)
+        console.log(this.state)
+        console.log(JSON.parse(val))
         this.setState({
           list: JSON.parse(val)
         })
       })
+
     }
     catch(err){
       console.log(err)
@@ -46,28 +51,40 @@ export default class ProjectPage extends Component {
   this.props.navigation.navigate('NewPage');
 };
 parseData(){
-  deleteNote = (key) => {
-    console.log(key);
-    this.state.list.splice(key, 1);
-    this.setState({list: this.state.list})
-    try{
-      AsyncStorage.removeItem('form').then((val) => {
-        console.log(this.props.navigation.state)
-        this.setState({
-          list: JSON.parse(val)
-        })
-        console.log(val)
-      })
-      console.log(form)
-    }catch(error){
-      console.log('Something Went Wrong!')
-    }
-  }
+
   if(this.state.list){
     var projects = this.state.list;
     projects = keyIndex(projects, 1);
 
     return projects.map((data,i) => {
+      let key = data._emailId;
+      deleteNote = () => {
+        console.log();
+        // projects.splice(data, 1);
+        // this.setState({list: projects})
+
+        try{
+          AsyncStorage.removeItem('form').then((val) => {
+            if(val === key){
+            console.log(key)
+            console.log(this.state.list)
+            console.log(JSON.parse(val))
+            this.setState({
+              list: JSON.parse(val)
+            })
+          } else {
+            console.log(JSON.parse(val))
+            this.setState({
+              list: JSON.parse(val)
+            })
+          }
+          });
+          console.log(this.state.list)
+        }catch(error){
+          console.log('Something Went Wrong!')
+        }
+      }
+
       console.log(data)
       console.log(data._emailId)
       console.log(i)

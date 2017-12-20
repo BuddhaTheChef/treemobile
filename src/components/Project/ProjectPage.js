@@ -105,8 +105,8 @@ parseData(){
               rightTitle={data.numtree}
               rightTitleStyle={styles.rightIcon}
               onPress={() =>
-                // this.props.navigation.navigate('NewPage')
-                { console.log(data, "Was deleted")}
+                 this.props.navigation.navigate('NewPage')
+                // { console.log(data, "Was deleted")}
                 }
               />
           </Swipeout>

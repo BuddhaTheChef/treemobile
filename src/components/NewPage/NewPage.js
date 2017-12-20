@@ -58,6 +58,9 @@ export default class NewPage extends Component {
         <MapView provider={this.props.provider} style={styles.map} initialRegion={this.state.region} onPress={this.onMapPress}>
           {this.state.markers.map(marker => (
             <MapView.Marker title={marker.key} key={marker.key} coordinate={marker.coordinate}>
+              <View style={styles.radius}>
+                <View style={styles.marker}/>
+              </View>
               <MapView.Callout>
                 <Text>
                   {marker.key}
@@ -122,15 +125,15 @@ const styles = StyleSheet.create({
     width: 80
   },
   radius: {
-    height: 40,
-    width: 40,
-    borderRadius: 50 / 2,
-    overflow: 'hidden',
-    backgroundColor: 'rgba(0,122,255,0.3)',
-    borderWidth: 1,
-    borderColor: 'rgba(0,122,255,0.6)',
-    alignItems: 'center',
-    justifyContent: 'center'
+    // height: 40,
+    // width: 40,
+    // borderRadius: 50 / 2,
+    // overflow: 'hidden',
+    // backgroundColor: 'rgba(0,122,255,0.3)',
+    // borderWidth: 1,
+    // borderColor: 'rgba(0,122,255,0.6)',
+    // alignItems: 'center',
+    // justifyContent: 'center'
   },
   marker: {
     height: 20,
